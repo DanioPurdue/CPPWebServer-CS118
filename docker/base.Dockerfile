@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     netcat \
     net-tools \
-    iproute2
+    iproute2 \
+    vim
     #     cmake \
     #     libboost-log-dev \
     #     libboost-signals-dev \
