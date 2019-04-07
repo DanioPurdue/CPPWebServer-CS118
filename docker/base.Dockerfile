@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y \
     netcat \
     net-tools \
     iproute2 \
-    vim
+    vim \
+    git \
+    telnet
     #     cmake \
     #     libboost-log-dev \
     #     libboost-signals-dev \
