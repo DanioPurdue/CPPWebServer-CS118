@@ -11,9 +11,35 @@ RUN apt-get update && apt-get install -y \
     iproute2 \
     vim \
     git \
-    telnet
-    #     cmake \
-    #     libboost-log-dev \
-    #     libboost-signals-dev \
-    #     libboost-system-dev \
-    #     libgtest-devsr
+    telnet \
+    cmake \
+    libgtest-dev \
+    libgoogle-glog-dev \
+    libboost-all-dev \
+    g++ `#Fb folly deps` \
+    automake \
+    autoconf \
+    autoconf-archive \
+    libtool \
+    libboost-all-dev \
+    libevent-dev \
+    libdouble-conversion-dev \
+    libgoogle-glog-dev \
+    libgflags-dev \
+    liblz4-dev \
+    liblzma-dev \
+    libsnappy-dev \
+    make \
+    zlib1g-dev \
+    binutils-dev \
+    libjemalloc-dev \
+    libssl-dev \
+    libiberty-dev
+
+ENV LD_LIBRARY_PATH=/libs
+ENV CPLUS_INCLUDE_PATH=/libs/include
+RUN mkdir /src
+RUN mkdir /build
+WORKDIR /build
+
+CMD ["/bin/bash"]
