@@ -3,6 +3,9 @@
 DOCKER_SOCK=/var/run/docker.sock
 DOCKER_NAME="devel_env_118"
 
+# TODO: See first answer here:
+# https://stackoverflow.com/questions/39525820/docker-port-forwarding-not-working
+
 function build_image(){
     # Build image
     docker build \
@@ -57,19 +60,21 @@ function create_container() {
     # Run image
     if [ -z "$PORT" ]
     then
-        docker run -dit --rm \
+        docker run -it --rm \
         -v "${SRC_DIR}":"${SRC_DIR}" \
         --security-opt seccomp=unconfined --cap-add SYS_PTRACE \
         --name $1 \
         --hostname $1 \
+        -w ${SRC_DIR} \
         $1
     else
-        docker run -dit --rm \
+        docker run -it --rm \
         -v "${SRC_DIR}":"${SRC_DIR}" \
         --security-opt seccomp=unconfined --cap-add SYS_PTRACE \
         --name $1 \
         --hostname $1 \
         -p 127.0.0.1:${PORT}:${PORT} \
+        -w ${SRC_DIR} \
         $1
     fi
 }
@@ -104,10 +109,11 @@ do
 done
 
 build_image $DOCKER_NAME
-create_container $DOCKER_NAME
 
 set -- "${FLAGS[@]}" # restore FLAGS parameters
 echo Docker exposed with port mapping "${PORT}"
 echo Docker mounted at "${MOUNT}"
 echo From source dir "${SRC_DIR}"
-exec_shell $DOCKER_NAME
+
+
+create_container $DOCKER_NAME
