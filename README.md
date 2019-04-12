@@ -2,10 +2,16 @@
 cs118Project1
 
 ## Allen's Notes:
-@Danio, you can check unbuntu version in container with this command:  cat /etc/lsb-release
-You can build the container with ./start.sh, and pass a port to map to host machine like this: ./start.sh -p 8080 
-This will bind port 8080 from the local machine to the port 8080 on the docker. Also if the bash script doesn't work, check the line endings, 
-they might have gotten corrupted to the windows style CRLF rather than LF.
+@Danio, 
+
+How to run the code:
+Start in main project directory and start docker desktop:
+```
+./start.sh -p 5000
+cd build
+make
+./server
+```
 
 ## Team Members
 * Allen Nikka, UID: 405027870

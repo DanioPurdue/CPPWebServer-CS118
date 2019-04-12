@@ -18,16 +18,18 @@
 using namespace std;
 int main(int argc, char *argv[])
 {
-    cout << "Hello Server !" << endl;
+    cout << "Server is running at port: " << MYPORT << endl;
     int sockfd, new_fd;
     struct sockaddr_in my_addr;    /* my address */
     struct sockaddr_in their_addr; /* connector addresss */
     socklen_t sin_size;
+    size_t read_buff_size = 512;
+    char *read_buff = new char[read_buff_size]; //[read_buff_size];
 
     /*create a socket*/
     if ((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1)
     {
-        perror("fails to create socket");
+        perror("Failed to create socket");
         exit(1);
     }
     my_addr.sin_family = AF_INET;
@@ -38,13 +40,13 @@ int main(int argc, char *argv[])
     /* bind the socket to the specified port*/
     if (bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) == -1)
     {
-        perror("fails to bind the socket to a specific port");
+        perror("Failed to bind the socket to a specific port");
         exit(1);
     }
 
     if (listen(sockfd, BACKLOG) == -1)
     {
-        perror("fails to listen");
+        perror("Failed to listen on socket");
         exit(1);
     }
     while (1)
@@ -52,9 +54,24 @@ int main(int argc, char *argv[])
         sin_size = sizeof(struct sockaddr_in);
         if ((new_fd = accept(sockfd, (sockaddr *)&their_addr, &sin_size)) == -1)
         {
-            perror("fail to accept");
+            perror("Failed to accept");
         }
-        cout << "A client try to connect" << endl;
+
+        cout << "A client connected from" << inet_ntoa(their_addr.sin_addr) << endl;
+        if (read(new_fd, (void *)read_buff, read_buff_size) == -1)
+        {
+            perror("Couldn't read from client socket");
+        }
+        else
+        {
+            cout << "Read from socket: \n";
+            for (size_t i = 0; i < read_buff_size; ++i)
+            {
+                cout << read_buff[i];
+            }
+            cout << endl;
+        }
+
         close(new_fd);
     }
     return 0;
