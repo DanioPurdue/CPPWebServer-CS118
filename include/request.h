@@ -17,9 +17,6 @@
 
 namespace http
 {
-namespace server
-{
-
 struct request
 {
   std::string method;
@@ -30,6 +27,4 @@ struct request
   std::unordered_map<std::string, std::string> headers;
   const char *raw_request;
 };
-
-} // namespace server
 } // namespace http

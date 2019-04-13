@@ -16,6 +16,13 @@ make
 ## Team Members
 * Allen Nikka, UID: 405027870
 
+
+
+## TODOs
+
+1. should we add an index page?
+2. shoulde we use c++14?
+
 ## Submission Requirements:
 •Your source codes (e.g.webserver.c).  The code of the server can be more than one file.
 •A Makefile.  The TAs will only type make to compile your code.
