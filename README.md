@@ -13,9 +13,14 @@ make
 ./server
 ```
 
+## Danio's Notes:
+@Allen,
+
+The server can support 404 not found page only. I also added a makefile.
+
 ## Team Members
 * Allen Nikka, UID: 405027870
-
+* Jianxiong Wang, UID: 005229714
 
 
 ## TODOs
