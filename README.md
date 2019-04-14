@@ -16,8 +16,7 @@ make
 ## Danio's Notes:
 @Allen,
 
-The server can support 404 not found page only. I also added a makefile.
-
+The server can support 404 not found page only. I also added a makefile. I used the request object added by you. I did not use the response object, because we just need to server few static page and it might be an overkill to use the custom reply object.
 ## Team Members
 * Allen Nikka, UID: 405027870
 * Jianxiong Wang, UID: 005229714
