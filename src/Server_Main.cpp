@@ -64,26 +64,28 @@ int main(int argc, char *argv[])
             perror("Failed to accept");
         }
 
-        cout << "A client connected from" << inet_ntoa(their_addr.sin_addr) << endl;
+        // cout << "A client connected from" << inet_ntoa(their_addr.sin_addr) << endl; //TODO: Remove for final submission
         if (read(new_fd, (void *)read_buff, read_buff_size) == -1)
         {
             perror("Couldn't read from client socket");
         }
         else
         {
-            cout << "Read from socket: \n";
+            // cout << "Read from socket: \n";
             for (size_t i = 0; i < read_buff_size; ++i)
             {
                 cout << read_buff[i];
             }
             //TODO::add a check to only print out the header
             unique_ptr<request> req;
-            if ((req = rp.parseRequest(read_buff, read_buff_size)) != nullptr) {
+            if ((req = rp.parseRequest(read_buff, read_buff_size)) != nullptr)
+            {
+                const string uri = req->uri;
                 // send the repsonse back to the client
-                string message_str = res_prep.getResponse(req->uri);
-                cout << message_str << endl;
-                const char * message = message_str.c_str();
-                send(new_fd, (const void * ) message, message_str.length(), 0);
+                string message_str = res_prep.getResponse(uri);
+                // cout << message_str << endl; //TODO: Remove for final submission
+                const char *message = message_str.c_str();
+                send(new_fd, (const void *)message, message_str.length(), 0);
             }
         }
         close(new_fd);
