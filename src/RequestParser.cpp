@@ -4,7 +4,7 @@
 #include "../include/request.h"
 #include "../include/RequestParser.h"
 using namespace std;
-unique_ptr<http::request> RequestParser::parseRequest(char * buff, int buff_size){
+unique_ptr<request> RequestParser::parseRequest(char * buff, int buff_size){
     int idx = 0;
     // find the header
     while (idx < buff_size) {
@@ -19,13 +19,13 @@ unique_ptr<http::request> RequestParser::parseRequest(char * buff, int buff_size
     }
     string header_str(buff, idx);
     cout << "testing header: " << header_str << endl;
-    std::unique_ptr<http::request> req_ptr = make_unique<http::request>();
+    std::unique_ptr<request> req_ptr = make_unique<request>();
     return parseHeaderStr(header_str);
 }
 
-std::unique_ptr<http::request> RequestParser::parseHeaderStr(const std::string header_str) {
+std::unique_ptr<request> RequestParser::parseHeaderStr(const std::string header_str) {
     if (header_str.length() == 0) return nullptr;
-    std::unique_ptr<http::request> req_ptr = std::make_unique<http::request>();
+    std::unique_ptr<request> req_ptr = std::make_unique<request>();
     int start_idx = 0;
     //find http method
     int end_idx;

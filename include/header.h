@@ -1,19 +1,8 @@
-//
-// header.hpp
-// ~~~~~~~~~~
-//
-// Copyright (c) 2003-2018 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
+// Based on original code from: 
+// https://www.boost.org/doc/libs/1_69_0/doc/html/boost_asio/example/cpp11/http/server/header.hpp
+
 #pragma once
 #include <string>
-
-namespace http
-{
-namespace server
-{
 
 struct header
 {   
@@ -27,8 +16,3 @@ public:
         value = v;
     }
 };
-
-} // namespace server
-} // namespace http
-
-// HTTP_HEADER_HPP

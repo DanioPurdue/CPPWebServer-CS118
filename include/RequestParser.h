@@ -5,6 +5,6 @@
 class RequestParser{
 
     public:
-    std::unique_ptr<http::request> parseRequest(char * buff, int buff_size);
-    std::unique_ptr<http::request> parseHeaderStr(const std::string header_str);
+    std::unique_ptr<request> parseRequest(char * buff, int buff_size);
+    std::unique_ptr<request> parseHeaderStr(const std::string header_str);
 };

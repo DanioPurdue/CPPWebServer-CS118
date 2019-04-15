@@ -1,13 +1,5 @@
-//
-// request.h
-// ~~~~~~~~~~~
-//
-// Copyright (c) 2003-2018 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
-// Src:https://www.boost.org/doc/libs/1_69_0/doc/html/boost_asio/example/cpp11/http/server/request.hpp
+// Based on original code from: 
+// https://www.boost.org/doc/libs/1_69_0/doc/html/boost_asio/example/cpp11/http/server/request.hpp
 
 #pragma once
 #include <string>
@@ -15,8 +7,6 @@
 #include <unordered_map>
 #include "header.h"
 
-namespace http
-{
 struct request
 {
   std::string method;
@@ -27,4 +17,3 @@ struct request
   std::unordered_map<std::string, std::string> headers;
   const char *raw_request;
 };
-} // namespace http
