@@ -38,15 +38,18 @@ string ResponsePrep::getResponse(const string uri)
 
         return response_header;
     }
-    int bytes_num = in_file.tellg();
-    char file_content[bytes_num];
-    in_file.seekg(0, ios::beg);
-    in_file.read(file_content, bytes_num);
-    in_file.close();
+
+    in_file.seekg(0, std::ios::end);
+    size_t size = in_file.tellg();
+    std::string body(size, ' ');
+    in_file.seekg(0);
+    in_file.read(&body[0], size);
+
+    string body_len = to_string(size);
     string response_header = string("HTTP/1.1 200 OK \n") +
-                             "Content-Length: " + to_string(bytes_num) + " \n" +
+                             "Content-Length: " + body_len + " \n" +
                              "Connection: close \n" +
-                             "Content-Type: " + uri2type[type] + "\n charset=UTF-8\n" + "\r\n" + file_content;
+                             "Content-Type: " + uri2type[type] + "\n charset=UTF-8\n" + "\r\n" + body;
 
     return response_header;
 }
