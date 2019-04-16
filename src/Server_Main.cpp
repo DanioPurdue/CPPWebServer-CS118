@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
             {
                 cout << read_buff[i];
             }
+            cout << "\n\n";
             //TODO::add a check to only print out the header
             unique_ptr<request> req;
             if ((req = rp.parseRequest(read_buff, read_buff_size)) != nullptr)

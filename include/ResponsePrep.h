@@ -22,4 +22,7 @@ public:
     }
     std::string getResponse(const std::string uri);
     const std::string static_dir_ = "staticFiles/";
+
+private:
+    std::pair<std::string, size_t> file2StrSize(std::string filename);
 };
