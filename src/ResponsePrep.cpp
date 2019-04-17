@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <fstream>
 #include <sys/stat.h>
+#include <regex>
 // #include <memory>
 #include "../include/ResponsePrep.h"
 
@@ -12,6 +13,7 @@ string ResponsePrep::getResponse(const string uri)
     string filename = static_dir_ + (uri).substr(1); //remove leading /, add static directory
     size_t type_pos = filename.rfind(".");
     string type = filename.substr(type_pos + 1);
+    filename = regex_replace(filename, std::regex("\\%20"), " "); //replace escape for spaces with spaces
 
     pair<string, size_t> body = file2StrSize(filename);
     if (body.second == 0)
@@ -56,6 +58,6 @@ pair<string, size_t> ResponsePrep::file2StrSize(string filename)
     in_file.seekg(0);
     in_file.read(&body[0], size);
 
-    return make_pair(body, size);
+    return make_pair(body, size * 2);
     ;
 }

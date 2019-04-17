@@ -4,6 +4,8 @@ cs118Project1
 ## Allen's Notes:
 @Danio, 
 
+The only issue now is that there is a content length mismatch for .gif files, everything else works.
+
 How to run the code:
 Start in main project directory and start docker desktop:
 ```
