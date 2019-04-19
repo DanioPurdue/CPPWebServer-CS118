@@ -28,6 +28,8 @@ The server can support 404 not found page only. I also added a makefile. I used 
 
 1. should we add an index page?
 2. shoulde we use c++14?
+3. test a file more than 100mb?
+4. do we need to add more return status. we only have two status so fare: 1.200 2.404
 
 ## Submission Requirements:
 •Your source codes (e.g.webserver.c).  The code of the server can be more than one file.
