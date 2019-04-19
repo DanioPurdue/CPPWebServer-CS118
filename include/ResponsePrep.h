@@ -20,9 +20,10 @@ public:
         uri2type["png"] = "text/png";
         uri2type["gif"] = "image/gif";
     }
-    std::string getResponse(const std::string uri);
+    char * getResponse(const std::string uri, int * resp_size);
     const std::string static_dir_ = "staticFiles/";
 
 private:
     std::pair<std::string, size_t> file2StrSize(std::string filename);
+    char * file2StrSize_v2(std::string filename, int * file_size);
 };

@@ -72,21 +72,22 @@ int main(int argc, char *argv[])
         else
         {
             // cout << "Read from socket: \n";
+            cout << "\n==================Client Request===================" << endl;
             for (size_t i = 0; i < read_buff_size; ++i)
             {
                 cout << read_buff[i];
             }
-            cout << "\n\n";
-            //TODO::add a check to only print out the header
             unique_ptr<request> req;
             if ((req = rp.parseRequest(read_buff, read_buff_size)) != nullptr)
             {
                 const string uri = req->uri;
-                // send the repsonse back to the client
-                string message_str = res_prep.getResponse(uri);
-                // cout << message_str << endl; //TODO: Remove for final submission
-                const char *message = message_str.c_str();
-                send(new_fd, (const void *)message, message_str.length(), 0);
+                int resp_size;
+                char * response = res_prep.getResponse(uri, &resp_size);
+                send(new_fd, (const void *)response, resp_size, 0);
+                if (response != nullptr) {
+                    delete [] response;
+                    response = nullptr;
+                }
             }
         }
         close(new_fd);
