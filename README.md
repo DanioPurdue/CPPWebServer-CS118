@@ -10,7 +10,6 @@ How to run the code:
 Start in main project directory and start docker desktop:
 ```
 ./start.sh -p 5000
-cd build
 make
 ./server
 ```
@@ -26,10 +25,10 @@ The server can support 404 not found page only. I also added a makefile. I used 
 
 ## TODOs
 
-1. should we add an index page?
-2. shoulde we use c++14?
-3. test a file more than 100mb?
-4. do we need to add more return status. we only have two status so fare: 1.200 2.404
+1. should we add an index page? - I don't think we need to
+2. shoulde we use c++14? - It doesnt say we cant
+3. test a file more than 100mb? - I did, it works.
+4. do we need to add more return status. we only have two status so fare: 1.200 2.404 - I don't think so
 
 ## Submission Requirements:
 •Your source codes (e.g.webserver.c).  The code of the server can be more than one file.
