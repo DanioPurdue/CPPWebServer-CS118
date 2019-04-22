@@ -11,7 +11,6 @@
 #include <unistd.h>
 #include <memory.h>
 #include "../include/header.h"
-#include "../include/reply.h"
 #include "../include/request.h"
 #include "../include/RequestParser.h"
 #include "../include/ResponsePrep.h"
